@@ -2,7 +2,7 @@
 Map's settings changer for osu! game.
 
 How to use?
-- Find a directory where the game is installed. To do it, right click on osu shortcut on your desktop and click 'Open File Location'. Ex path. 'C:\Users\Nequs\AppData\Local\osu!'
+- Find a directory where the game is installed. To do it, right click on osu shortcut on your desktop and click 'Open File Location'. Ex. path: 'C:\Users\Nequs\AppData\Local\osu!'
 
 - If game is installed in AppData directory which is hidden, you need to enable show hidden directories option. Open File Explorer, select the “View” tab and check the “Hidden items” check box.
 
