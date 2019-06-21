@@ -14,4 +14,4 @@ How to use?
 
 # Executable file
 If you don't want to compile or you don't know how to do it, download ready to use exetucable file from the link below
-https://drive.google.com/open?id=1qMvluKQjN_s3mklFqvcCJTl_2eAYQzw1
+https://github.com/Nequss/OsuMapManager/releases
