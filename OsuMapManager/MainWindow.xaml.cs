@@ -38,8 +38,6 @@ namespace OsuMapManager
 
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                status_txt.Text = "Loading maps...";
-
                 dirs = Directory.GetDirectories(dialog.SelectedPath);
 
                 foreach (string dir in dirs)
@@ -58,87 +56,92 @@ namespace OsuMapManager
         {
             selected = Listofmaps.SelectedItem as String;
 
-            foreach (string dir in dirs)
+            if (selected != "" & selected != null)
             {
-                files = Directory.GetFiles(dir, "*.osu");
-                foreach (string file in files)
+                save_map.Visibility = Visibility.Visible;
+
+                foreach (string dir in dirs)
                 {
-                    if (selected == Path.GetFileName(file))
+                    files = Directory.GetFiles(dir, "*.osu");
+                    foreach (string file in files)
                     {
-                        string[] lines = File.ReadAllLines(Path.GetFullPath(file));
-                        hp_flag = false;
-                        ar_flag = false;
-                        od_flag = false;
-                        cs_flag = false;
-
-                        bool title_flag = false;
-                        bool artist_flag = false;
-                        bool creator_flag = false;
-
-                        foreach (string line in lines)
+                        if (selected == Path.GetFileName(file))
                         {
-                            Regex check = new Regex("Title:");
+                            string[] lines = File.ReadAllLines(Path.GetFullPath(file));
+                            hp_flag = false;
+                            ar_flag = false;
+                            od_flag = false;
+                            cs_flag = false;
 
-                            if (title_flag == false)
-                                if (check.Match(line).Success)
-                                {
-                                    mapTitle.Text = "Title: " + Regex.Replace(line, "Title:", "");
-                                    title_flag = true;
-                                }
+                            bool title_flag = false;
+                            bool artist_flag = false;
+                            bool creator_flag = false;
 
-                            check = new Regex("Artist:");
+                            foreach (string line in lines)
+                            {
+                                Regex check = new Regex("Title:");
 
-                            if (artist_flag == false)
-                                if (check.Match(line).Success)
-                                {
-                                    mapArtist.Text = "Artist: " + Regex.Replace(line, "Artist:", "");
-                                    artist_flag = true;
-                                }
+                                if (title_flag == false)
+                                    if (check.Match(line).Success)
+                                    {
+                                        mapTitle.Text = "Title: " + Regex.Replace(line, "Title:", "");
+                                        title_flag = true;
+                                    }
 
-                            check = new Regex("Creator:");
+                                check = new Regex("Artist:");
 
-                            if (creator_flag == false)
-                                if (check.Match(line).Success)
-                                {
-                                    mapCreator.Text = "Creator: " + Regex.Replace(line, "Creator:", "");
-                                    creator_flag = true;
-                                }
+                                if (artist_flag == false)
+                                    if (check.Match(line).Success)
+                                    {
+                                        mapArtist.Text = "Artist: " + Regex.Replace(line, "Artist:", "");
+                                        artist_flag = true;
+                                    }
 
-                            check = new Regex("HPDrainRate:.");
+                                check = new Regex("Creator:");
 
-                            if (hp_flag == false)
-                                if (check.Match(line).Success)
-                                {
-                                    mapHP.Text = Regex.Replace(line, "HPDrainRate:", "");
-                                    hp_flag = true;
-                                }
+                                if (creator_flag == false)
+                                    if (check.Match(line).Success)
+                                    {
+                                        mapCreator.Text = "Creator: " + Regex.Replace(line, "Creator:", "");
+                                        creator_flag = true;
+                                    }
 
-                            check = new Regex("CircleSize:.");
+                                check = new Regex("HPDrainRate:.");
 
-                            if (cs_flag == false)
-                                if (check.Match(line).Success)
-                                {
-                                    mapCS.Text = Regex.Replace(line, "CircleSize:", "");
-                                    cs_flag = true;
-                                }
+                                if (hp_flag == false)
+                                    if (check.Match(line).Success)
+                                    {
+                                        mapHP.Text = Regex.Replace(line, "HPDrainRate:", "");
+                                        hp_flag = true;
+                                    }
 
-                            check = new Regex("OverallDifficulty:.");
+                                check = new Regex("CircleSize:.");
 
-                            if (od_flag == false)
-                                if (check.Match(line).Success)
-                                {
-                                    mapOD.Text = Regex.Replace(line, "OverallDifficulty:", "");
-                                    od_flag = true;
-                                }
+                                if (cs_flag == false)
+                                    if (check.Match(line).Success)
+                                    {
+                                        mapCS.Text = Regex.Replace(line, "CircleSize:", "");
+                                        cs_flag = true;
+                                    }
 
-                            check = new Regex("ApproachRate:.");
+                                check = new Regex("OverallDifficulty:.");
 
-                            if (ar_flag == false)
-                                if (check.Match(line).Success)
-                                {
-                                    mapAR.Text = Regex.Replace(line, "ApproachRate:", "");
-                                    ar_flag = true;
-                                }
+                                if (od_flag == false)
+                                    if (check.Match(line).Success)
+                                    {
+                                        mapOD.Text = Regex.Replace(line, "OverallDifficulty:", "");
+                                        od_flag = true;
+                                    }
+
+                                check = new Regex("ApproachRate:.");
+
+                                if (ar_flag == false)
+                                    if (check.Match(line).Success)
+                                    {
+                                        mapAR.Text = Regex.Replace(line, "ApproachRate:", "");
+                                        ar_flag = true;
+                                    }
+                            }
                         }
                     }
                 }
@@ -147,71 +150,75 @@ namespace OsuMapManager
 
         private void Save_map_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (mapAR.Text != "0")
-                ar_flag = true;
+            if (selected != "" & selected != null)
+            { 
 
-            foreach (string dir in dirs)
-            {
-                files = Directory.GetFiles(dir);
+                if (mapAR.Text != "0")
+                    ar_flag = true;
 
-                foreach (string file in files)
+                foreach (string dir in dirs)
                 {
-                    if (selected == Path.GetFileName(file))
+                    files = Directory.GetFiles(dir);
+
+                    foreach (string file in files)
                     {
-                        string path_to_folder = Path.GetDirectoryName(file) + " Edited";
+                        if (selected == Path.GetFileName(file))
+                        {
+                            string path_to_folder = Path.GetDirectoryName(file) + " Edited";
 
-                        Directory.CreateDirectory(path_to_folder);
+                            Directory.CreateDirectory(path_to_folder);
 
-                        foreach (var filee in files)
-                            if (selected == Path.GetFileName(filee) & Path.GetExtension(filee) == ".osu")
-                            {
-                                string[] lines = File.ReadAllLines(Path.GetFullPath(filee));
-                                List<String> newLines = new List<string>();
-
-                                foreach (string line in lines)
+                            foreach (var filee in files)
+                                if (selected == Path.GetFileName(filee) & Path.GetExtension(filee) == ".osu")
                                 {
+                                    string[] lines = File.ReadAllLines(Path.GetFullPath(filee));
+                                    List<String> newLines = new List<string>();
 
-                                    Regex checkHP = new Regex("HPDrainRate:.");
-                                    Regex checkOD = new Regex("OverallDifficulty:.");
-                                    Regex checkCS = new Regex("CircleSize:.");
-                                    Regex checkAR = new Regex("ApproachRate:.");
+                                    foreach (string line in lines)
+                                    {
 
-                                    if (checkHP.Match(line).Success)
-                                    {
-                                        newLines.Add("HPDrainRate:" + mapHP.Text);
-                                        hp_flag = false;
+                                        Regex checkHP = new Regex("HPDrainRate:.");
+                                        Regex checkOD = new Regex("OverallDifficulty:.");
+                                        Regex checkCS = new Regex("CircleSize:.");
+                                        Regex checkAR = new Regex("ApproachRate:.");
+
+                                        if (checkHP.Match(line).Success)
+                                        {
+                                            newLines.Add("HPDrainRate:" + mapHP.Text);
+                                            hp_flag = false;
+                                        }
+                                        else if (checkOD.Match(line).Success)
+                                        {
+                                            newLines.Add("OverallDifficulty:" + mapOD.Text);
+                                            od_flag = false;
+                                        }
+                                        else if (checkCS.Match(line).Success)
+                                        {
+                                            newLines.Add("CircleSize:" + mapCS.Text);
+                                            cs_flag = false;
+                                        }
+                                        else if ((!cs_flag & !od_flag) & (!hp_flag & ar_flag))
+                                        {
+                                            newLines.Add("ApproachRate:" + mapAR.Text);
+                                            ar_flag = false;
+                                        }
+                                        else
+                                            newLines.Add(line);
                                     }
-                                    else if (checkOD.Match(line).Success)
+
+                                    using (var tw = new StreamWriter(path_to_folder + @"\" + Path.GetFileNameWithoutExtension(filee) + " Edited.osu", true))
                                     {
-                                        newLines.Add("OverallDifficulty:" + mapOD.Text);
-                                        od_flag = false;
+                                        foreach (string newline in newLines)
+                                            tw.WriteLine(newline);
+
+                                        tw.Close();
                                     }
-                                    else if (checkCS.Match(line).Success)
-                                    {
-                                        newLines.Add("CircleSize:" + mapCS.Text);
-                                        cs_flag = false;
-                                    }
-                                    else if ((!cs_flag & !od_flag) & (!hp_flag & ar_flag))
-                                    {
-                                        newLines.Add("ApproachRate:" + mapAR.Text);
-                                        ar_flag = false;
-                                    }
-                                    else
-                                        newLines.Add(line);
                                 }
-
-                                using (var tw = new StreamWriter(path_to_folder + @"\" + Path.GetFileNameWithoutExtension(filee) + " Edited.osu", true))
-                                {
-                                    foreach (string newline in newLines)
-                                        tw.WriteLine(newline);
-
-                                    tw.Close();
-                                }
-                            }
-                            else if (Path.GetExtension(filee) == ".osu")
-                                continue;
-                            else
-                                File.Copy(Path.GetFullPath(filee), path_to_folder + @"\" + Path.GetFileName(filee), true);
+                                else if (Path.GetExtension(filee) == ".osu")
+                                    continue;
+                                else
+                                    File.Copy(Path.GetFullPath(filee), path_to_folder + @"\" + Path.GetFileName(filee), true);
+                        }
                     }
                 }
             }
@@ -234,6 +241,11 @@ namespace OsuMapManager
 
             foreach (string item in maplist)
                 Listofmaps.Items.Add(item);
+        }
+
+        private void Save_map_Click(object sender, RoutedEventArgs e)
+        {
+            save_map.Visibility = Visibility.Hidden;
         }
     }
 }
