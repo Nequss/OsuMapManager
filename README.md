@@ -6,7 +6,7 @@ How to use?
 
 - If game is installed in AppData directory which is hidden, you need to enable show hidden directories option. Open File Explorer, select the “View” tab and check the “Hidden items” check box.
 
-- Start 'Osu Map Manager.exe' and click on 'Set path to osu map folder', choose 'songs' directory in and click Ok.
+- Start 'Osu Map Manager.exe' and click on 'Set path to osu map folder', choose 'songs' directory and click Ok.
 
 - Depending on your amount of maps and hardware, it may take a while to load all the maps.
 
