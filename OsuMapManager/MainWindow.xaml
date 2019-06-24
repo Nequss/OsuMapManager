@@ -47,14 +47,10 @@
                 <Border Width="5"/>
                 <TextBox Name="mapHP" Width="20" TextAlignment="Center" Text="0"/>
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" VerticalAlignment="Top" Margin="0,10,0,0">
                 <Border Width="140"/>
                 <Button Name="save_map" Visibility="Hidden" DockPanel.Dock="Left" Width="50" Height="20" Content="Save" Click="Save_map_Click" PreviewMouseDown="Save_map_PreviewMouseDown"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" VerticalAlignment="Top" Margin="2,10,0,0">
-                <TextBlock Name="status_txt" TextWrapping="WrapWithOverflow" TextAlignment="Center" FontSize="12" Text="" Width="195" Height="30"/>
             </StackPanel>
         </DockPanel>
     </Grid>

@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Diagnostics;
 using System.Collections.Generic;
 
 namespace OsuMapManager
@@ -68,6 +67,7 @@ namespace OsuMapManager
                         if (selected == Path.GetFileName(file))
                         {
                             string[] lines = File.ReadAllLines(Path.GetFullPath(file));
+
                             hp_flag = false;
                             ar_flag = false;
                             od_flag = false;
