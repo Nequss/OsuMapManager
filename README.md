@@ -1,6 +1,8 @@
 # OsuMapManager
 Map's settings changer for osu! game.
 
+<img src="https://i.imgur.com/8Vw9xLn.png"/>
+
 How to use?
 - Find a directory where the game is installed. To do it, right click on osu shortcut on your desktop and click 'Open File Location'. Ex. path: 'C:\Users\Nequs\AppData\Local\osu!'
 
