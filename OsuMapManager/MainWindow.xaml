@@ -12,9 +12,6 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top" Width="auto">
                 <MenuItem Header="Set path to osu map folder" PreviewMouseDown="select_path"/>
-                <!---<MenuItem Header="Change AR in all maps"/>
-                <MenuItem Header="Change HP drain in all maps"/>
-                <MenuItem Header="Change CS in all maps"/> -->
             </Menu>
 
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" VerticalAlignment="Top">
