@@ -15,5 +15,4 @@ How to use?
 - Once all maps are loaded, double click on the map in the list, change the settings and click save. Program makes new copy of map and it does not overwrite old original maps. Press F5 in osu to reload and add new maps.
 
 # Executable file
-If you don't want to compile or you don't know how to do it, download ready to use exetucable file from the link below
 https://github.com/Nequss/OsuMapManager/releases
